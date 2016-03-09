@@ -77,6 +77,18 @@ void Table::addElementSomewhere(){
 	}
 }
 
+void Table::removeElementFromTheEnd(){
+	numberOfElements--;
+	table = (int*)realloc(table, sizeof(int)*(numberOfElements));
+}
+
+void Table::removeElementFromTheBeginning(){
+	for (int i = 0; i < numberOfElements - 1; i++){
+		table[i] = table[i + 1];
+	}
+	removeElementFromTheEnd();
+}
+
 
 
 void Table::setNumberOfElements(int localNumberOfElements){

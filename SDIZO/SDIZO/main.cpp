@@ -16,7 +16,7 @@ int main()
 
 	cout << endl;
 	table.resize();
-	table.showContent();*/
+	table.showContent();
 
 	cout << endl;
 
@@ -32,8 +32,16 @@ int main()
 	table.addElementSomewhere();
 	table.showContent();
 	cout << endl;
+	*/
+	table.removeElementFromTheEnd();
+	table.showContent();
 
+	cout << endl;
 
+	table.removeElementFromTheBeginning();
+	table.showContent();
+
+	cout << endl;
 	system("PAUSE");
 	return 0;
 }

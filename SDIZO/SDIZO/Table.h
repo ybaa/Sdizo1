@@ -19,5 +19,8 @@ public:
 	void addElementSomewhere();
 	void addElementToTheBeginning();
 	void addElementToTheEnd();
+	void removeElementFromTheBeginning();
+	void removeElementFromTheEnd();
+	void removeElementSomewhere();
 };
 
