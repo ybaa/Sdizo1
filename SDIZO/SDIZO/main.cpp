@@ -42,6 +42,11 @@ int main()
 	table.showContent();
 
 	cout << endl;
+
+	table.removeElementFromSomewhere();
+	table.showContent();
+	cout << endl;
+
 	system("PAUSE");
 	return 0;
 }

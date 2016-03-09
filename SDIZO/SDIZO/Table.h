@@ -21,6 +21,6 @@ public:
 	void addElementToTheEnd();
 	void removeElementFromTheBeginning();
 	void removeElementFromTheEnd();
-	void removeElementSomewhere();
+	void removeElementFromSomewhere();
 };
 

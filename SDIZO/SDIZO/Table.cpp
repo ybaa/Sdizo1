@@ -64,7 +64,7 @@ void Table::addElementSomewhere(){
 	int place = (rand() % (numberOfElements - 1) + 0);	//number of index of table for the new variable
 
 	if (place == 0)
-		addElementSomewhere();
+		addElementToTheBeginning();
 	if (place == numberOfElements)
 		addElementToTheEnd();
 	else{
@@ -87,6 +87,21 @@ void Table::removeElementFromTheBeginning(){
 		table[i] = table[i + 1];
 	}
 	removeElementFromTheEnd();
+}
+
+void Table::removeElementFromSomewhere(){
+	int place = (rand() % (numberOfElements - 1) + 0);	//number of index of table for the new variable
+
+	if (place == 0)
+		removeElementFromTheBeginning();
+	if (place == numberOfElements)
+		removeElementFromTheEnd();
+	else{
+		for (int i = place; i < numberOfElements - 2; i++){
+			table[i] = table[i + 1];
+		}
+		removeElementFromTheEnd();
+	}
 }
 
 
