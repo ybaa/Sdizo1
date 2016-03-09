@@ -25,7 +25,8 @@ Table::~Table(){
 }
 
 void Table::showContent(){
-	int neededSpaceForOneNumber = 80 / numberOfElements;	//count how much space is needed to show numbers in one line with nice spacing
+	//int neededSpaceForOneNumber = 80 / numberOfElements;	//count how much space is needed to show numbers in one line with nice spacing
+	int neededSpaceForOneNumber = 4;
 	for (int i = 0; i < numberOfElements; i++){
 		cout << setw(neededSpaceForOneNumber) << table[i];
 	}
@@ -97,7 +98,7 @@ void Table::removeElementFromSomewhere(){
 	if (place == numberOfElements)
 		removeElementFromTheEnd();
 	else{
-		for (int i = place; i < numberOfElements - 2; i++){
+		for (int i = place; i < numberOfElements - 1; i++){
 			table[i] = table[i + 1];
 		}
 		removeElementFromTheEnd();

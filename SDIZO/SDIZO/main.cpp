@@ -31,8 +31,9 @@ int main()
 	cin >> x;
 	table.addElementSomewhere();
 	table.showContent();
-	cout << endl;
 	*/
+	cout << endl;
+	
 	table.removeElementFromTheEnd();
 	table.showContent();
 
