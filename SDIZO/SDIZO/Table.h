@@ -15,5 +15,6 @@ public:
 	void setNumberOfElements(int);
 	int getNumberOfElements();
 	void showContent();
+	void resize();
 };
 
