@@ -14,7 +14,7 @@ Table::Table(){
 
 	srand(time(NULL));		//fill the table with random two-digit numbers
 	for (int i = 0; i < numberOfElements; i++){
-		table[i] = (rand() % 200) + (-99);
+		table[i] = (rand() % 199) + (-99);
 	}
 	
 }
@@ -37,13 +37,47 @@ void Table::resize(){
 	cin >> numberOfElements;
 	table = (int*)realloc(table, sizeof(int)*numberOfElements);
 
-	if (numberOfElements < oldNumberOfElements){
+	if (numberOfElements > oldNumberOfElements){
 		srand(time(NULL));		//fill the rest of the table with random two-digit numbers
 			for (int i = oldNumberOfElements; i < numberOfElements; i++){
-			table[i] = (rand() % 200) + (-99);
+			table[i] = (rand() % 199) + (-99);
 		}
 	}
 }
+
+void Table::addElementToTheBeginning(){
+	numberOfElements++;
+	table = (int*)realloc(table, sizeof(int)*(numberOfElements));
+	for (int i = 1; i < numberOfElements; i++){			//move all elements and left place for the 1st one
+		table[numberOfElements - i] = table[numberOfElements - i - 1];
+	}
+	table[0] = (rand() % 200) + (-99);
+}
+
+void Table::addElementToTheEnd(){
+	numberOfElements++;
+	table = (int*)realloc(table, sizeof(int)*(numberOfElements));
+	table[numberOfElements - 1] = (rand() % 199) + (-99);
+}
+
+void Table::addElementSomewhere(){
+	int place = (rand() % (numberOfElements - 1) + 0);	//number of index of table for the new variable
+
+	if (place == 0)
+		addElementSomewhere();
+	if (place == numberOfElements)
+		addElementToTheEnd();
+	else{
+		numberOfElements++;
+		table = (int*)realloc(table, sizeof(int)*(numberOfElements));
+		for (int i = 1; i < numberOfElements - place ; i++){		//move all elements from place
+			table[numberOfElements - i] = table[numberOfElements - i - 1];
+		}
+		table[place] = (rand() % 199) + (-99);
+	}
+}
+
+
 
 void Table::setNumberOfElements(int localNumberOfElements){
 	numberOfElements = localNumberOfElements;

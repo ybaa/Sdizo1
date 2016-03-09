@@ -16,5 +16,8 @@ public:
 	int getNumberOfElements();
 	void showContent();
 	void resize();
+	void addElementSomewhere();
+	void addElementToTheBeginning();
+	void addElementToTheEnd();
 };
 
