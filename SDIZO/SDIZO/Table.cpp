@@ -7,8 +7,10 @@
 using namespace std;
 
 Table::Table(){
-	cout << "Podaj liczbe elementow tablicy: ";
-	cin >> numberOfElements;
+	do{
+		cout << "Podaj liczbe elementow tablicy: ";
+		cin >> numberOfElements;
+	} while (numberOfElements <= 0);
 	table = (int*)malloc(sizeof(int)*numberOfElements);
 	//table = new int[numberOfElements];
 
@@ -105,6 +107,16 @@ void Table::removeElementFromSomewhere(){
 	}
 }
 
+void Table::findElement(){
+	int index;
+	
+	do{
+		cout << "Podaj indeks elementu, ktory chcesz wyswietlic: ";
+		cin >> index;
+	} while (index < 0 || index >= numberOfElements);
+	
+	cout << table[index];
+}
 
 
 void Table::setNumberOfElements(int localNumberOfElements){

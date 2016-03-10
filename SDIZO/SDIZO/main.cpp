@@ -48,6 +48,9 @@ int main()
 	table.showContent();
 	cout << endl;
 
+	table.findElement();
+	cout << endl;
+
 	system("PAUSE");
 	return 0;
 }

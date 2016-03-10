@@ -22,5 +22,6 @@ public:
 	void removeElementFromTheBeginning();
 	void removeElementFromTheEnd();
 	void removeElementFromSomewhere();
+	void findElement();
 };
 
