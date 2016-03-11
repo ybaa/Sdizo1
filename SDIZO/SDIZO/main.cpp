@@ -2,14 +2,15 @@
 #include <stdio.h>
 #include <iostream>
 #include "Table.h"
+#include "List.h"
 
 
 
 int main()
-{
+{/*
 	Table table;
 	table.showContent();
-	/*
+	
 	cout << endl;
 	table.resize();
 	table.showContent();
@@ -31,7 +32,7 @@ int main()
 	cin >> x;
 	table.addElementSomewhere();
 	table.showContent();
-	*/
+	
 	cout << endl;
 	
 	table.removeElementFromTheEnd();
@@ -49,6 +50,34 @@ int main()
 	cout << endl;
 
 	table.findElement();
+	cout << endl;
+	*/
+
+	List list;
+	list.addElementToTheBeginning();
+
+	list.showContent();
+	cout << endl;
+
+	list.addElementToTheBeginning();
+
+	list.showContent();
+	cout << endl;
+
+	list.addElementToTheBeginning();
+
+	list.showContent();
+	cout << endl;
+
+	list.addElementToTheEnd();
+
+	list.showContent();
+	cout << endl;
+
+	list.addElementToTheEnd();
+	//list.addElementToTheBeginning();
+
+	list.showContent();
 	cout << endl;
 
 	system("PAUSE");
