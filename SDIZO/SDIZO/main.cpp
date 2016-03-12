@@ -88,9 +88,15 @@ int main()
 	list.showContent();
 	cout << endl;
 	//cout << list.getElementsCounter() << endl;
-	list.removeLastElement();
+	
+	list.removeFirstElement();
 	list.showContent();
 	cout << endl;
+
+	list.removeFirstElement();
+	list.showContent();
+	cout << endl;
+	
 
 	system("PAUSE");
 	return 0;

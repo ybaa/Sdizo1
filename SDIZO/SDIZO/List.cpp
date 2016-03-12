@@ -111,6 +111,16 @@ void List::removeLastElement(){
 	ElementsCounter--;
 }
 
+void List::removeFirstElement(){
+	myList *tmp = new myList;
+	tmp = head;
+	
+	tmp->value = NULL;
+	head = tmp->next;
+	tmp->previous = NULL;
+	ElementsCounter--;
+}
+
 
 int List::getElementsCounter(){
 	return ElementsCounter;

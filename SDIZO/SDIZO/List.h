@@ -21,6 +21,7 @@ public:
 	void addElementToTheEnd();
 	void addElementSomewhere();
 	void removeLastElement();
+	void removeFirstElement();
 	void showContent();
 	void showInverseContent();
 	int getElementsCounter();
