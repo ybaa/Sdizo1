@@ -117,8 +117,9 @@ void List::showInverseContent(){
 void List::addElementSomewhere(){
 	myList *tmp = new myList;	//create temporary pointer
 	cout << "podaj wartosc: ";
-	cin >> tmp->value;
-
+	int helpValue;
+	cin >> helpValue;
+	tmp->value = helpValue;
 	if (head == NULL){
 		tmp->next = NULL;
 		tmp->previous = NULL;
@@ -126,8 +127,44 @@ void List::addElementSomewhere(){
 		last = head;
 	}
 	else{
-		int place = (rand() % (ElementsCounter - 2) + 1); // without beginning and the end
+		//int place = (rand() % (ElementsCounter - 2) + 1); // without beginning and the end
 		//-----------------------------------------------  I DONT KNOW HOW TO DO IT, REMEMBER TO GO BACK IN HERE-------------------------------
+		int place;
+		cout << "W ktore miejsce dodac element: ";
+		cin >> place;
+		//add new element to the end and move all values to make place for new element in the middle
+		//tmp = last;
+		tmp->previous = last;
+		tmp->next = NULL;
+		last->next = tmp;
+		last = tmp;
+		last->value = 0;
+		ElementsCounter++;
+
+		tmp = last;
+		myList *tmp2 = new myList;
+		//tmp2 = last;
+		tmp2 = tmp ->previous;
+		//tmp = last;
+		for (int i = place; i < ElementsCounter; i++){
+			//tmp2 = tmp->previous;
+			//tmp = tmp2;
+			int help = tmp2->value;
+			//tmp->value = help;
+			tmp->value = help;
+			tmp = tmp2;
+			tmp2 = tmp->previous;
+
+			if (i == ElementsCounter - 1){
+				tmp->value = helpValue;
+				tmp = tmp2;
+				tmp2 = tmp->previous;
+			}
+			
+		}
+
+
+
 	}
 }
 

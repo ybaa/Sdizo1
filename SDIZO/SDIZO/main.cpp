@@ -58,11 +58,7 @@ int main()
 	list.showContent();
 	
 	cout << endl;
-	list.removeSomeElement();
-	list.showContent();
-	cout << endl;
-	
-	list.removeSomeElement();
+	list.addElementSomewhere();
 	list.showContent();
 	cout << endl;
 	/*
