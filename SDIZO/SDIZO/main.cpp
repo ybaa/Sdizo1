@@ -79,6 +79,8 @@ int main()
 
 	list.showContent();
 	cout << endl;
+	list.showInverseContent();
+	cout << endl;
 
 	system("PAUSE");
 	return 0;
