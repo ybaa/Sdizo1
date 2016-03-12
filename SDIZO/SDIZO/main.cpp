@@ -54,6 +54,9 @@ int main()
 	*/
 
 	List list;
+
+	list.showContent();
+
 	list.addElementToTheBeginning();
 	//cout << list.getElementsCounter() << endl;
 

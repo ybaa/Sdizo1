@@ -22,6 +22,7 @@ public:
 	void addElementSomewhere();
 	void removeLastElement();
 	void removeFirstElement();
+	void addRandomValues();
 	void showContent();
 	void showInverseContent();
 	int getElementsCounter();

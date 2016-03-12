@@ -18,6 +18,13 @@ List::List()
 	head = NULL;
 	last = NULL;
 	ElementsCounter = 0;
+
+	cout << "Ile elementow ma miec lista: ";
+	int howMany;
+	cin >> howMany;
+	for (int i = 0; i < howMany; i++){
+		addRandomValues();
+	}
 }
 
 
@@ -25,6 +32,27 @@ List::List()
 List::~List()
 {
 }
+
+void List::addRandomValues(){
+	myList *tmp = new myList;	//create temporary pointer
+	int helpValue = (rand() % 199) + (-99);
+	tmp->value = helpValue;
+
+	if (head == NULL){
+		tmp->next = NULL;
+		tmp->previous = NULL;
+		head = tmp;
+		last = head;
+	}
+	else{
+		tmp->next = head;
+		tmp->previous = NULL;
+		head->previous = tmp;
+		head = tmp;
+	}
+	ElementsCounter++;
+}
+
 
 void List::addElementToTheBeginning(){
 	myList *tmp = new myList;	//create temporary pointer
@@ -55,8 +83,10 @@ void List::addElementToTheEnd(){
 	if (head == NULL){
 		tmp->next = NULL;
 		tmp->previous = NULL;
-		head = tmp;
-		last = head;
+		//head = tmp;
+		// last = head;
+		last = tmp;
+		head = last;
 	}
 	else{
 		tmp->previous = last;
@@ -101,7 +131,7 @@ void List::addElementSomewhere(){
 	}
 }
 
-void List::removeLastElement(){
+void List::removeLastElement(){	//just set pointer of neighbouring elements properly
 	myList *tmp = new myList;
 	tmp = last;
 	last = tmp->previous;
@@ -111,10 +141,9 @@ void List::removeLastElement(){
 	ElementsCounter--;
 }
 
-void List::removeFirstElement(){
+void List::removeFirstElement(){ //just set pointer of neighbouring elements properly
 	myList *tmp = new myList;
 	tmp = head;
-	
 	tmp->value = NULL;
 	head = tmp->next;
 	tmp->previous = NULL;
