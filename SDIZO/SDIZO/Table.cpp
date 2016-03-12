@@ -46,6 +46,12 @@ void Table::resize(){
 			table[i] = (rand() % 199) + (-99);
 		}
 	}
+	if (numberOfElements < oldNumberOfElements){
+		int howManyElements = oldNumberOfElements - numberOfElements;
+		for (int i = 0; i <howManyElements ; i++){
+			table = (int*)realloc(table, sizeof(int)*(numberOfElements));
+		}
+	}
 }
 
 void Table::addElementToTheBeginning(){
