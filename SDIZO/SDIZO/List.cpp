@@ -19,9 +19,11 @@ List::List()
 	last = NULL;
 	ElementsCounter = 0;
 
-	cout << "Ile elementow ma miec lista: ";
 	int howMany;
-	cin >> howMany;
+	do{
+		cout << "Ile elementow ma miec lista: ";
+		cin >> howMany;
+	} while (howMany < 0);
 	for (int i = 0; i < howMany; i++){
 		addRandomValues();
 	}
@@ -120,53 +122,71 @@ void List::addElementSomewhere(){
 	int helpValue;
 	cin >> helpValue;
 	tmp->value = helpValue;
+
+
 	if (head == NULL){
 		tmp->next = NULL;
 		tmp->previous = NULL;
 		head = tmp;
 		last = head;
+		ElementsCounter++;
 	}
 	else{
 		//int place = (rand() % (ElementsCounter - 2) + 1); // without beginning and the end
 		int place;
-		cout << "W ktore miejsce dodac element: ";
-		cin >> place;
-		
+		do{
+			cout << "W ktore miejsce dodac element: ";
+			cin >> place;
+		} while (place < 0 || place > ElementsCounter + 1);
 
-		//add new element to the end and move all values to make place for new element in the middle
-		//tmp = last;
-		tmp->previous = last;
-		tmp->next = NULL;
-		last->next = tmp;
-		last = tmp;
-		last->value = 0;
-		ElementsCounter++;
-		
-		tmp = last;
-		myList *tmp2 = new myList;
-		//tmp2 = last;
-		tmp2 = tmp ->previous;
-		//tmp = last;
-		for (int i = place; i < ElementsCounter; i++){
-			//tmp2 = tmp->previous;
-			//tmp = tmp2;
-			int help = tmp2->value;
-			//tmp->value = help;
-			tmp->value = help;
-			tmp = tmp2;
-			tmp2 = tmp->previous;
+			if (place == 1){
+				//	addElementToTheBeginning();
 
-			//if it is a place where the value should be added, just place the value there
-			if (i == ElementsCounter - 1){
-				tmp->value = helpValue;
-				tmp = tmp2;
-				tmp2 = tmp->previous;
+
+				tmp->next = head;
+				tmp->previous = NULL;
+				head->previous = tmp;
+				head = tmp;
+				ElementsCounter++;
 			}
-			
-		}
+			else{
 
 
+				//add new element to the end and move all values to make place for new element in the middle
+				//tmp = last;
+				tmp->previous = last;
+				tmp->next = NULL;
+				last->next = tmp;
+				last = tmp;
+				last->value = helpValue;
+				ElementsCounter++;
 
+				tmp = last;
+				myList *tmp2 = new myList;
+				//tmp2 = last;
+				tmp2 = tmp->previous;
+				//tmp = last;
+				for (int i = place; i < ElementsCounter; i++){
+					//tmp2 = tmp->previous;
+					//tmp = tmp2;
+					int help = tmp2->value;
+					//tmp->value = help;
+					tmp->value = help;
+					tmp = tmp2;
+					tmp2 = tmp->previous;
+
+					//if it is a place where the value should be added, just place the value there
+					if (i == ElementsCounter - 1){
+						tmp->value = helpValue;
+						tmp = tmp2;
+						tmp2 = tmp->previous;
+					}
+
+				}
+
+
+			}
+		
 	}
 }
 
@@ -192,9 +212,11 @@ void List::removeFirstElement(){ //just set pointer of neighbouring elements pro
 void List::removeSomeElement(){
 	myList *tmp = new myList;
 	myList *tmp2 = new myList;
-	cout << "Ktory element usunac: ";
 	int which;
-	cin >> which;
+	do{
+		cout << "Ktory element usunac: ";
+		cin >> which;
+	} while (which < 0 || which > ElementsCounter);
 	tmp = head;
 	for (int i = 0; i < which-1; i++){	//set it in the correct position
 		tmp = tmp->next;
@@ -216,10 +238,11 @@ void List::removeSomeElement(){
 
 void List::findElement(){
 	myList *tmp = head;
-	
-	cout << "Ktory element chcesz wyswietlic: ";
 	int which;
-	cin >> which;
+	do{
+		cout << "Ktory element chcesz wyswietlic: ";
+		cin >> which;
+	} while (which < 0 || which > ElementsCounter);
 
 	for (int i = 0; i < which-1; i++){
 		tmp = tmp->next;
