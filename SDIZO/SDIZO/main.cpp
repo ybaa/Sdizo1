@@ -55,31 +55,41 @@ int main()
 
 	List list;
 	list.addElementToTheBeginning();
+	//cout << list.getElementsCounter() << endl;
 
 	list.showContent();
 	cout << endl;
+	//cout << list.getElementsCounter() << endl;
 
 	list.addElementToTheBeginning();
-
 	list.showContent();
 	cout << endl;
+	//cout << list.getElementsCounter() << endl;
 
 	list.addElementToTheBeginning();
-
 	list.showContent();
 	cout << endl;
+
+	//cout << list.getElementsCounter() << endl;
 
 	list.addElementToTheEnd();
-
 	list.showContent();
 	cout << endl;
+	//cout << list.getElementsCounter() << endl;
 
 	list.addElementToTheEnd();
 	//list.addElementToTheBeginning();
 
 	list.showContent();
 	cout << endl;
-	list.showInverseContent();
+	//cout << list.getElementsCounter() << endl;
+
+	list.removeLastElement();
+	list.showContent();
+	cout << endl;
+	//cout << list.getElementsCounter() << endl;
+	list.removeLastElement();
+	list.showContent();
 	cout << endl;
 
 	system("PAUSE");
