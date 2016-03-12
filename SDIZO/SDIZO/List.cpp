@@ -150,6 +150,31 @@ void List::removeFirstElement(){ //just set pointer of neighbouring elements pro
 	ElementsCounter--;
 }
 
+void List::removeSomeElement(){
+	myList *tmp = new myList;
+	myList *tmp2 = new myList;
+	cout << "Ktory element usunac: ";
+	int which;
+	cin >> which;
+	tmp = head;
+	for (int i = 0; i < which-1; i++){	//set it in the correct position
+		tmp = tmp->next;
+	}
+	
+	tmp2 = tmp->next;
+	for (int i = which; i < ElementsCounter; i++){	//change all values to the end
+		
+			tmp2 = tmp->next;
+			int help = tmp2->value;
+			tmp->value = help;
+			tmp = tmp->next;
+		
+	}
+
+	removeLastElement();
+	
+}
+
 
 int List::getElementsCounter(){
 	return ElementsCounter;

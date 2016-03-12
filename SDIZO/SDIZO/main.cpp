@@ -52,10 +52,20 @@ int main()
 	table.findElement();
 	cout << endl;
 	*/
-	/*
+	
 	List list;
 
 	list.showContent();
+	
+	cout << endl;
+	list.removeSomeElement();
+	list.showContent();
+	cout << endl;
+	
+	list.removeSomeElement();
+	list.showContent();
+	cout << endl;
+	/*
 
 	list.addElementToTheBeginning();
 	//cout << list.getElementsCounter() << endl;
@@ -102,18 +112,8 @@ int main()
 	
 	*/
 
-	Table table;
-	table.showContent();
-	cout << endl;
-	table.resize();
-	cout << endl;
-	table.showContent();
-	cout << endl;
-	cout << table.getNumberOfElements() << endl;
-	table.resize();
-	table.showContent();
-	cout << endl;
-	cout << table.getNumberOfElements() << endl;
+	
+
 	system("PAUSE");
 	return 0;
 }
