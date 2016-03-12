@@ -61,6 +61,9 @@ int main()
 	list.addElementSomewhere();
 	list.showContent();
 	cout << endl;
+	list.findElement();
+	cout << endl;
+
 	/*
 
 	list.addElementToTheBeginning();

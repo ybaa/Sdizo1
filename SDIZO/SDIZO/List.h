@@ -23,6 +23,7 @@ public:
 	void removeLastElement();
 	void removeFirstElement();
 	void removeSomeElement();
+	void findElement();
 	void addRandomValues();
 	void showContent();
 	void showInverseContent();

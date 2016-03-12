@@ -128,10 +128,11 @@ void List::addElementSomewhere(){
 	}
 	else{
 		//int place = (rand() % (ElementsCounter - 2) + 1); // without beginning and the end
-		//-----------------------------------------------  I DONT KNOW HOW TO DO IT, REMEMBER TO GO BACK IN HERE-------------------------------
 		int place;
 		cout << "W ktore miejsce dodac element: ";
 		cin >> place;
+		
+
 		//add new element to the end and move all values to make place for new element in the middle
 		//tmp = last;
 		tmp->previous = last;
@@ -140,7 +141,7 @@ void List::addElementSomewhere(){
 		last = tmp;
 		last->value = 0;
 		ElementsCounter++;
-
+		
 		tmp = last;
 		myList *tmp2 = new myList;
 		//tmp2 = last;
@@ -155,6 +156,7 @@ void List::addElementSomewhere(){
 			tmp = tmp2;
 			tmp2 = tmp->previous;
 
+			//if it is a place where the value should be added, just place the value there
 			if (i == ElementsCounter - 1){
 				tmp->value = helpValue;
 				tmp = tmp2;
@@ -210,6 +212,19 @@ void List::removeSomeElement(){
 
 	removeLastElement();
 	
+}
+
+void List::findElement(){
+	myList *tmp = head;
+	
+	cout << "Ktory element chcesz wyswietlic: ";
+	int which;
+	cin >> which;
+
+	for (int i = 0; i < which-1; i++){
+		tmp = tmp->next;
+	}
+	cout << tmp->value;
 }
 
 
