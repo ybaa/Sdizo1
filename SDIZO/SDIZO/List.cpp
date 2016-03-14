@@ -33,6 +33,15 @@ List::List()
 
 List::~List()
 {
+	myList *tmp = head;
+	myList *tmp2 = head;
+	
+	for (int i = 0; i <ElementsCounter; i++){
+		tmp->previous = NULL;
+		tmp = tmp->next;
+		tmp2->next = NULL;
+		tmp2 = tmp;
+	}
 }
 
 void List::addRandomValues(){
