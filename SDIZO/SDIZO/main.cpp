@@ -12,7 +12,7 @@ int main()
 	BinaryHeap heap;
 	heap.showContent();
 	cout << endl;
-	heap.sort();
+	heap.addElement();
 	heap.showContent();
 	cout << endl;
 	//heap.draw();
