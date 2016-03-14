@@ -3,19 +3,19 @@
 #include <iostream>
 #include "Table.h"
 #include "List.h"
+#include "BinaryHeap.h"
 
 
 
 int main()
 {
-	List list;
-	list.showContent();
+	BinaryHeap heap;
+	heap.showContent();
 	cout << endl;
-	list.addElementSomewhere();
-	list.showContent();
+	heap.sort();
+	heap.showContent();
 	cout << endl;
-	list.addElementToTheEnd();
-	list.showContent();
+	//heap.draw();
 	cout << endl;
 
 	system("PAUSE");
