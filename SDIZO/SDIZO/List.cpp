@@ -259,6 +259,20 @@ void List::findElement(){
 	cout << tmp->value;
 }
 
+void List::findElementValue(){
+	myList *tmp = head;
+	cout << "Podaj wartosc jaka chcesz znalezc: ";
+	int toFind;
+	cin >> toFind;
+
+	for (int i = 0; i < ElementsCounter; i++){
+		if (tmp->value == toFind)
+			cout << "[" << i << "] " << tmp->value;
+		
+		tmp = tmp->next;
+	}
+}
+
 
 int List::getElementsCounter(){
 	return ElementsCounter;

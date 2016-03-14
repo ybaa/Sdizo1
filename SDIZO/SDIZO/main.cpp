@@ -18,6 +18,11 @@ int main()
 	//heap.draw();
 	cout << endl;
 
+	List list;
+	list.showContent();
+	list.findElementValue();
+	cout << endl;
+
 	system("PAUSE");
 	return 0;
 }

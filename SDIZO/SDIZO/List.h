@@ -24,6 +24,7 @@ public:
 	void removeFirstElement();
 	void removeSomeElement();
 	void findElement();
+	void findElementValue();
 	void addRandomValues();
 	void showContent();
 	void showInverseContent();
