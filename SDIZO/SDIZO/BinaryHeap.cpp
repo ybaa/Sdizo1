@@ -48,6 +48,40 @@ void BinaryHeap::addElement(){
 }
 
 
+void BinaryHeap::removeRoot(){
+	myHeap[0] = myHeap[ElementsCounter - 1];
+	myHeap[ElementsCounter - 1] = NULL;
+	ElementsCounter--;
+	myHeap = (int*)realloc(myHeap, sizeof(int)*ElementsCounter);
+
+	showContent();
+	cout << endl;
+
+	int index = 0;
+	int leftChild = 2 * index + 1;
+	int rightChild = 2 * index + 2;
+	while ((myHeap[index] < myHeap[leftChild] && leftChild<ElementsCounter) || (myHeap[index] < myHeap[rightChild] && rightChild<ElementsCounter)){
+		if (myHeap[rightChild] > myHeap[leftChild] && rightChild < ElementsCounter){
+			swap(myHeap[index], myHeap[rightChild]);
+			index = rightChild;
+		}
+		if (myHeap[leftChild] > myHeap[rightChild] && (rightChild < ElementsCounter || leftChild == ElementsCounter-1)){
+			swap(myHeap[index], myHeap[leftChild]);
+			index = leftChild;
+		}
+		else{
+			break;
+		}
+
+		//showContent();
+		//cout << endl;
+		leftChild = 2 * index + 1;
+		rightChild = 2 * index + 2;
+
+	}
+
+}
+
 void BinaryHeap::draw(){
 	
 

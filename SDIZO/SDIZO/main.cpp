@@ -12,15 +12,14 @@ int main()
 	BinaryHeap heap;
 	heap.showContent();
 	cout << endl;
-	heap.addElement();
+	//heap.addElement();
 	heap.showContent();
 	cout << endl;
 	//heap.draw();
 	cout << endl;
 
-	List list;
-	list.showContent();
-	list.findElementValue();
+	heap.removeRoot();
+	heap.showContent();
 	cout << endl;
 
 	system("PAUSE");

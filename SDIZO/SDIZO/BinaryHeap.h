@@ -11,5 +11,6 @@ public:
 	void showContent();
 	void draw();
 	void addElement();
+	void removeRoot();
 };
 
