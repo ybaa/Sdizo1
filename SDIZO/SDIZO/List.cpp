@@ -40,7 +40,6 @@ List::~List()
 		tmp->previous = NULL;
 		tmp = tmp->next;
 		tmp2->next = NULL;
-//		tmp->value = NULL;
 		tmp2 = tmp;
 	}
 }
@@ -126,7 +125,8 @@ void List::showInverseContent(){
 	}
 }
 
-void List::addElementSomewhere(){
+void List::add(){
+	//previous version of adding element in the middle
 	myList *tmp = new myList;	//create temporary pointer
 	cout << "podaj wartosc: ";
 	int helpValue;
@@ -197,6 +197,64 @@ void List::addElementSomewhere(){
 
 			}
 		
+	}
+} 
+
+void List::addElementSomewhere(){
+	myList *tmp = new myList;	//create temporary pointer
+	myList *tmp2 = new myList;
+	cout << "podaj wartosc: ";
+	int helpValue;
+	cin >> helpValue;
+	tmp->value = helpValue;
+	tmp2 = head;
+
+	if (head == NULL){
+		tmp->next = NULL;
+		tmp->previous = NULL;
+		head = tmp;
+		last = head;
+		ElementsCounter++;
+	}
+	else {
+		//int place = (rand() % (ElementsCounter - 2) + 1); // without beginning and the end
+		int place;
+		do{
+			cout << "W ktore miejsce dodac element: ";
+			cin >> place;
+		} while (place < 0 || place > ElementsCounter + 1);
+
+		if (place == 1){
+			//	addElementToTheBeginning();
+
+
+			tmp->next = head;
+			tmp->previous = NULL;
+			head->previous = tmp;
+			head = tmp;
+			ElementsCounter++;
+		}
+		else if (place == ElementsCounter+1){
+			tmp->previous = last;
+			tmp->next = NULL;
+			last->next = tmp;
+			last = tmp;
+			last->value = helpValue;
+			ElementsCounter++;
+		}
+		else{
+			//set pointer where the element should be added, set previous and next of neighborough elements to it
+			for (int i = 0; i < place-1 ; i++){
+				tmp2 = tmp2->next;
+			}
+			
+			tmp ->next = tmp2;
+			tmp2 = tmp2->previous;
+			tmp2->next = tmp;
+			tmp2 = tmp->next;
+			tmp2->previous = tmp;
+			ElementsCounter++;
+		}
 	}
 }
 

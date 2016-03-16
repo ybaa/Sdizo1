@@ -9,14 +9,20 @@
 
 int main()
 {
-	BinaryHeap heap;
-	heap.showContent();
-	heap.removeRoot();
-	cout << endl << endl;
-	heap.draw();
-	//heap.showContent();
+	List list;
+	list.showContent();
 	cout << endl;
-	heap.findElement();
+	list.addElementSomewhere();
+	list.showContent();
+	cout << endl;
+	list.add();
+	list.showContent();
+	cout << endl;
+	list.add();
+	list.showContent();
+	cout << endl;
+	list.add();
+	list.showContent();
 	cout << endl;
 
 
