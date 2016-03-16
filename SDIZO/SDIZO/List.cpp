@@ -40,6 +40,7 @@ List::~List()
 		tmp->previous = NULL;
 		tmp = tmp->next;
 		tmp2->next = NULL;
+//		tmp->value = NULL;
 		tmp2 = tmp;
 	}
 }

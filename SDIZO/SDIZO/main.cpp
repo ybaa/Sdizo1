@@ -11,16 +11,15 @@ int main()
 {
 	BinaryHeap heap;
 	heap.showContent();
+	heap.removeRoot();
+	cout << endl << endl;
+	heap.draw();
+	//heap.showContent();
 	cout << endl;
-	//heap.addElement();
-	heap.showContent();
-	cout << endl;
-	//heap.draw();
+	heap.findElement();
 	cout << endl;
 
-	heap.removeRoot();
-	heap.showContent();
-	cout << endl;
+
 
 	system("PAUSE");
 	return 0;

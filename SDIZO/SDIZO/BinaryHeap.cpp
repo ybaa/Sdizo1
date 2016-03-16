@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <math.h>
 
+
 using namespace std;
 
 BinaryHeap::BinaryHeap()
@@ -54,8 +55,8 @@ void BinaryHeap::removeRoot(){
 	ElementsCounter--;
 	myHeap = (int*)realloc(myHeap, sizeof(int)*ElementsCounter);
 
-	showContent();
-	cout << endl;
+	//showContent();
+	//cout << endl;
 
 	int index = 0;
 	int leftChild = 2 * index + 1;
@@ -84,9 +85,27 @@ void BinaryHeap::removeRoot(){
 
 void BinaryHeap::draw(){
 	
-
-
-
+	int help = 1;
+	int x = 1;
+	int counter = 1;
+	int power = 2;
+	
+	cout << setw(40) << myHeap[0] << endl;
+	while (help < ElementsCounter){
+		if (power == 8)
+			cout << "    ";
+		while (counter <= power){
+			cout << setw(80 / (power +x)) << myHeap[help];
+			help++;
+			counter++;
+			if (help >= ElementsCounter)
+				break;
+		}
+		counter = 1;
+		cout << endl;
+		power *= 2;
+	
+	}
 }
 
 
@@ -95,6 +114,23 @@ void BinaryHeap::showContent(){
 	for (int i = 0; i < ElementsCounter; i++){
 		cout << setw(neededSpaceForOneNumber) << myHeap[i];
 	}
+}
+
+void BinaryHeap::findElement(){
+	int value;
+	cout << "Podaj wartosc: ";
+	cin >> value;
+	bool isInHeap = false;
+	for (int i = 0; i < ElementsCounter; i++){
+		if (myHeap[i] == value)
+			isInHeap = true;
+		
+	}
+	
+	if (isInHeap == true)
+		cout << "Element istnieje w kopcu";
+	else
+		cout << "Brak takiego elementu";
 }
 
 BinaryHeap::~BinaryHeap()
