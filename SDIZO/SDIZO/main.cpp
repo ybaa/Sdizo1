@@ -14,15 +14,9 @@ int main()
 {
 	Table table;
 	List list;
-	//BinaryHeap heap;
-
-
-
+	BinaryHeap heap;
 
 	
-
-	
-
 	int whichStruct;
 	cout << "wybierz strukture: " << endl;
 	cout << "[1] Tablica" << endl;
@@ -149,6 +143,41 @@ int main()
 		break;
 	case 3: 
 		
+		int whichOption3;
+		do{
+			heap.showContent();
+			cout << endl;
+			heap.draw();
+			cout << endl;
+			cout << "wybierz operacje: " << endl;
+			cout << "[1] Dodaj element" << endl;
+			cout << "[2] Usun korzen" << endl;
+			cout << "[3] Znajdz element" << endl;
+			cout << "[4] Koniec" << endl;
+			cin >> whichOption3;
+
+			switch (whichOption3)
+			{
+			case 1:
+				heap.addElement();
+				break;
+			case 2:
+				heap.removeRoot();
+				break;
+			case 3:
+				heap.findElement();
+				break;
+			case 4:
+				
+				break;
+		
+			default:
+				cout << "nie ma takiej opcji" << endl;
+				break;
+			}
+		} while (whichOption3 != 4);
+
+
 		break;
 
 	default:

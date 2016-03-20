@@ -3,35 +3,38 @@
 #include <cstdlib>
 #include <iomanip>
 #include <math.h>
+#include <fstream>
 
 
 using namespace std;
 
 BinaryHeap::BinaryHeap()
 {
-	do{
-		cout << "Podaj liczbe elementow kopca: ";
-		cin >> ElementsCounter;
-	} while (ElementsCounter <= 0);
+
+	ElementsCounter = 14;
 	srand(time(NULL));
 	myHeap = (int*)malloc(sizeof(int)*ElementsCounter);
-	//table = new int[numberOfElements];
 
-	int parent,index;
-	myHeap[0] = (rand() % 199) + (-99);
-	//srand(time(NULL));		//fill the table with random two-digit numbers
+	fstream myFile;
+	myFile.open("dataToRead.txt");
+	int variable, parent, index;
+	myFile >> variable;
+	myHeap[0] = variable;
+	
 	for (int i = 1; i < ElementsCounter; i++){
-		myHeap[i] = (rand() % 199) + (-99);
+		myFile >> variable;
+		myHeap[i] = variable;
 		index = i;
 		parent = floor((index - 1) / 2);
 		while (myHeap[index] > myHeap[parent]){
 			swap(myHeap[index], myHeap[parent]);
 			index = parent;
 			parent = floor((index - 1) / 2);
+
 		}
+	
 	}
-	
-	
+	myFile.close();
 }
 
 void BinaryHeap::addElement(){
@@ -61,12 +64,13 @@ void BinaryHeap::removeRoot(){
 	int index = 0;
 	int leftChild = 2 * index + 1;
 	int rightChild = 2 * index + 2;
+	cout << myHeap[index] << "   " << myHeap[leftChild] << "   " << myHeap[rightChild] << endl;
 	while ((myHeap[index] < myHeap[leftChild] && leftChild<ElementsCounter) || (myHeap[index] < myHeap[rightChild] && rightChild<ElementsCounter)){
 		if (myHeap[rightChild] > myHeap[leftChild] && rightChild < ElementsCounter){
 			swap(myHeap[index], myHeap[rightChild]);
 			index = rightChild;
 		}
-		if (myHeap[leftChild] > myHeap[rightChild] && (rightChild < ElementsCounter || leftChild == ElementsCounter-1)){
+		else if (myHeap[leftChild] > myHeap[rightChild] && (rightChild < ElementsCounter || leftChild == ElementsCounter-1)){
 			swap(myHeap[index], myHeap[leftChild]);
 			index = leftChild;
 		}
@@ -76,8 +80,9 @@ void BinaryHeap::removeRoot(){
 
 		//showContent();
 		//cout << endl;
-		leftChild = 2 * index + 1;
-		rightChild = 2 * index + 2;
+		leftChild = (2 * index) + 1;
+		rightChild =( 2 * index )+ 2;
+		cout << myHeap[index] << "   " << myHeap[leftChild] << "   " << myHeap[rightChild] << endl;
 
 	}
 
@@ -128,9 +133,9 @@ void BinaryHeap::findElement(){
 	}
 	
 	if (isInHeap == true)
-		cout << "Element istnieje w kopcu";
+		cout << "Element istnieje w kopcu" << endl;
 	else
-		cout << "Brak takiego elementu";
+		cout << "Brak takiego elementu" << endl;
 }
 
 BinaryHeap::~BinaryHeap()
