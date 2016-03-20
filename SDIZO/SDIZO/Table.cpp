@@ -3,27 +3,35 @@
 #include <cstdlib>
 #include <ctime>
 #include <iomanip>
+#include <fstream>
+
 
 using namespace std;
 
 Table::Table(){
-	do{
-		cout << "Podaj liczbe elementow tablicy: ";
-		cin >> numberOfElements;
-	} while (numberOfElements <= 0);
+	//get number of elements from file
+	fstream myFile;
+	myFile.open("dataToRead.txt");
+	myFile >> numberOfElements;
+	
 	table = (int*)malloc(sizeof(int)*numberOfElements);
-	//table = new int[numberOfElements];
 
-	srand(time(NULL));		//fill the table with random two-digit numbers
+	srand(time(NULL));	//it will be necessery later
+		
+	
+	//fill the table with the rest of values in file
+	int variable;
 	for (int i = 0; i < numberOfElements; i++){
-		table[i] = (rand() % 199) + (-99);
+		myFile >> variable;
+		table[i] = variable;
 	}
+	myFile.close();
+
 	
 }
 
 Table::~Table(){
 	free(table);
-	//delete[] table;
 }
 
 void Table::showContent(){
@@ -41,7 +49,7 @@ void Table::resize(){
 	table = (int*)realloc(table, sizeof(int)*numberOfElements);
 
 	if (numberOfElements > oldNumberOfElements){
-		srand(time(NULL));		//fill the rest of the table with random two-digit numbers
+		//srand(time(NULL));		//fill the rest of the table with random two-digit numbers
 			for (int i = oldNumberOfElements; i < numberOfElements; i++){
 			table[i] = (rand() % 199) + (-99);
 		}
@@ -114,14 +122,20 @@ void Table::removeElementFromSomewhere(){
 }
 
 void Table::findElement(){
-	int index;
-	
-	do{
-		cout << "Podaj indeks elementu, ktory chcesz wyswietlic: ";
-		cin >> index;
-	} while (index < 0 || index >= numberOfElements);
-	
-	cout << table[index];
+	int value;
+		cout << "Podaj wartosc elementu: ";
+		cin >> value;
+		bool isIn = false;
+
+		for (int i = 0; i < numberOfElements; i++){
+			if (table[i] == value){
+				cout << "table[" << i << "] = " << value << endl;
+				isIn = true;
+			}
+		}
+
+		if (isIn == false)
+			cout << "Nie ma takiego elementu w tablicy" << endl;
 }
 
 
