@@ -93,8 +93,9 @@ void List::addRandomValues(){
 
 void List::addElementToTheBeginning(){
 	myList *tmp = new myList;	//create temporary pointer
-	cout << "podaj wartosc: ";
-	cin >> tmp->value;
+	//cout << "podaj wartosc: ";
+	//cin >> tmp->value;
+	tmp->value = (rand() % 199) + (-99);
 
 	if (head == NULL){
 		tmp->next = NULL;
@@ -114,8 +115,9 @@ void List::addElementToTheBeginning(){
 
 void List::addElementToTheEnd(){
 	myList *tmp = new myList;	//create temporary pointer
-	cout << "podaj wartosc: ";
-	cin >> tmp->value;
+	//cout << "podaj wartosc: ";
+	//cin >> tmp->value;
+	tmp->value = (rand() % 199) + (-99);
 
 	if (head == NULL){
 		tmp->next = NULL;
@@ -229,10 +231,12 @@ void List::add(){
 void List::addElementSomewhere(){
 	myList *tmp = new myList;	//create temporary pointer
 	myList *tmp2 = new myList;
-	cout << "podaj wartosc: ";
-	int helpValue;
-	cin >> helpValue;
+	//cout << "podaj wartosc: ";
+	int helpValue = (rand() % 199) + (-99);;
+	//cin >> helpValue;
 	tmp->value = helpValue;
+	
+
 	tmp2 = head;
 
 	if (head == NULL){
@@ -243,15 +247,16 @@ void List::addElementSomewhere(){
 		ElementsCounter++;
 	}
 	else {
-		//int place = (rand() % (ElementsCounter - 2) + 1); // without beginning and the end
-		int place;
-		do{
+		
+		int place = (rand() % ElementsCounter) + 0;
+		/*do{
 			cout << "W ktore miejsce dodac element: ";
 			cin >> place;
-		} while (place < 0 || place > ElementsCounter + 1);
+		} while (place < 0 || place > ElementsCounter + 1);*/
+
 
 		if (place == 1){
-			//	addElementToTheBeginning();
+			
 
 
 			tmp->next = head;
@@ -306,11 +311,11 @@ void List::removeFirstElement(){ //just set pointer of neighbouring elements pro
 void List::removeSomeElement(){
 	myList *tmp = new myList;
 	myList *tmp2 = new myList;
-	int which;
-	do{
+	int which = (rand() % ElementsCounter) + 0;
+	/*do{
 		cout << "Ktory element usunac: ";
 		cin >> which;
-	} while (which < 0 || which > ElementsCounter);
+	} while (which < 0 || which > ElementsCounter);*/
 	tmp = head;
 	for (int i = 0; i < which-1; i++){	//set it in the correct position
 		tmp = tmp->next;
