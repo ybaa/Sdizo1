@@ -1,6 +1,7 @@
 #include "List.h"
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 
 using namespace std;
 
@@ -20,13 +21,38 @@ List::List()
 	ElementsCounter = 0;
 
 	int howMany;
-	do{
-		cout << "Ile elementow ma miec lista: ";
-		cin >> howMany;
-	} while (howMany < 0);
+
+	fstream myFile;
+	myFile.open("dataToRead.txt");
+	myFile >> howMany;
+
+	int helpValue;
 	for (int i = 0; i < howMany; i++){
-		addRandomValues();
+		
+		myList *tmp = new myList;	//create temporary pointer
+		myFile >> helpValue;
+		tmp->value = helpValue;
+
+		if (head == NULL){
+			tmp->next = NULL;
+			tmp->previous = NULL;
+			head = tmp;
+			last = head;
+		}
+		else{
+			tmp->next = head;
+			tmp->previous = NULL;
+			head->previous = tmp;
+			head = tmp;
+		}
+		ElementsCounter++;
+
+
+
 	}
+	myFile.close();
+
+
 }
 
 
@@ -315,7 +341,7 @@ void List::findElement(){
 	for (int i = 0; i < which-1; i++){
 		tmp = tmp->next;
 	}
-	cout << tmp->value;
+	cout << tmp->value << endl;
 }
 
 void List::findElementValue(){
@@ -326,7 +352,7 @@ void List::findElementValue(){
 
 	for (int i = 0; i < ElementsCounter; i++){
 		if (tmp->value == toFind)
-			cout << "[" << i << "] " << tmp->value;
+			cout << "[" << i << "] " << tmp->value << endl;
 		
 		tmp = tmp->next;
 	}
