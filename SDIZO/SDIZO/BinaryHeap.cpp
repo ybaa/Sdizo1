@@ -64,7 +64,7 @@ void BinaryHeap::removeRoot(){
 	int index = 0;
 	int leftChild = 2 * index + 1;
 	int rightChild = 2 * index + 2;
-	cout << myHeap[index] << "   " << myHeap[leftChild] << "   " << myHeap[rightChild] << endl;
+	
 	while ((myHeap[index] < myHeap[leftChild] && leftChild<ElementsCounter) || (myHeap[index] < myHeap[rightChild] && rightChild<ElementsCounter)){
 		if (myHeap[rightChild] > myHeap[leftChild] && rightChild < ElementsCounter){
 			swap(myHeap[index], myHeap[rightChild]);
@@ -82,7 +82,7 @@ void BinaryHeap::removeRoot(){
 		//cout << endl;
 		leftChild = (2 * index) + 1;
 		rightChild =( 2 * index )+ 2;
-		cout << myHeap[index] << "   " << myHeap[leftChild] << "   " << myHeap[rightChild] << endl;
+		
 
 	}
 
@@ -122,9 +122,9 @@ void BinaryHeap::showContent(){
 }
 
 void BinaryHeap::findElement(){
-	int value;
-	cout << "Podaj wartosc: ";
-	cin >> value;
+	int value = (rand() % 199) + (-99);
+	//cout << "Podaj wartosc: ";
+	//cin >> value;
 	bool isInHeap = false;
 	for (int i = 0; i < ElementsCounter; i++){
 		if (myHeap[i] == value)
@@ -132,10 +132,10 @@ void BinaryHeap::findElement(){
 		
 	}
 	
-	if (isInHeap == true)
+	/*if (isInHeap == true)
 		cout << "Element istnieje w kopcu" << endl;
 	else
-		cout << "Brak takiego elementu" << endl;
+		cout << "Brak takiego elementu" << endl;*/
 }
 
 BinaryHeap::~BinaryHeap()

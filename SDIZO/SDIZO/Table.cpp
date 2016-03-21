@@ -122,20 +122,20 @@ void Table::removeElementFromSomewhere(){
 }
 
 void Table::findElement(){
-	int value;
-		cout << "Podaj wartosc elementu: ";
-		cin >> value;
+	int value = (rand() % 199) + (-99);
+		//cout << "Podaj wartosc elementu: ";
+		//cin >> value;
 		bool isIn = false;
 
 		for (int i = 0; i < numberOfElements; i++){
 			if (table[i] == value){
-				cout << "table[" << i << "] = " << value << endl;
+				//cout << "table[" << i << "] = " << value << endl;
 				isIn = true;
 			}
 		}
 
-		if (isIn == false)
-			cout << "Nie ma takiego elementu w tablicy" << endl;
+		//if (isIn == false)
+			//cout << "Nie ma takiego elementu w tablicy" << endl;
 }
 
 

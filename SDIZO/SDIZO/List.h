@@ -29,6 +29,6 @@ public:
 	void showContent();
 	void showInverseContent();
 	int getElementsCounter();
-	void add(); // old version of adding in the middle
+	
 };
 
