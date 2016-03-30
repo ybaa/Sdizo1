@@ -38,7 +38,12 @@ BinaryHeap::BinaryHeap()
 }
 
 void BinaryHeap::addElement(){
-	int value = (rand() % 199) + (-99);
+	int value;
+	do{
+		cout << "Podaj wartosc: ";
+		cin >> value;
+	} while (value < -99 || value > 99);
+
 	ElementsCounter++;
 	myHeap = (int*)realloc(myHeap, sizeof(int)*ElementsCounter);
 	int index = ElementsCounter-1;
@@ -123,8 +128,8 @@ void BinaryHeap::showContent(){
 
 void BinaryHeap::findElement(){
 	int value = (rand() % 199) + (-99);
-	//cout << "Podaj wartosc: ";
-	//cin >> value;
+	cout << "Podaj wartosc: ";
+	cin >> value;
 	bool isInHeap = false;
 	for (int i = 0; i < ElementsCounter; i++){
 		if (myHeap[i] == value)
@@ -132,10 +137,10 @@ void BinaryHeap::findElement(){
 		
 	}
 	
-	/*if (isInHeap == true)
+	if (isInHeap == true)
 		cout << "Element istnieje w kopcu" << endl;
 	else
-		cout << "Brak takiego elementu" << endl;*/
+		cout << "Brak takiego elementu" << endl;
 }
 
 BinaryHeap::~BinaryHeap()

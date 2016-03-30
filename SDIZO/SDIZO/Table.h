@@ -12,7 +12,6 @@ private:
 public:
 	Table();
 	~Table();
-	void setNumberOfElements(int);
 	int getNumberOfElements();
 	void showContent();
 	void resize();

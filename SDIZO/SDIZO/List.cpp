@@ -56,23 +56,6 @@ List::List()
 
 }
 
-
-
-List::~List()
-{
-	myList *tmp = head;
-	myList *tmp2 = head;
-	
-	for (int i = 0; i <ElementsCounter; i++){
-		tmp->previous = NULL;
-		tmp = tmp->next;
-		tmp2->next = NULL;
-		tmp2->value = NULL;
-		tmp2 = tmp;
-	}
-	ElementsCounter = 0;
-}
-
 void List::addRandomValues(){
 	myList *tmp = new myList;	//create temporary pointer
 	int helpValue = (rand() % 199) + (-99);
@@ -93,13 +76,16 @@ void List::addRandomValues(){
 	ElementsCounter++;
 }
 
-
 void List::addElementToTheBeginning(){
 	myList *tmp = new myList;	//create temporary pointer
-	//cout << "podaj wartosc: ";
-	//cin >> tmp->value;
-	tmp->value = (rand() % 199) + (-99);
-
+	int helpValue;
+	
+	do{
+		cout << "podaj wartosc: ";
+		cin >> helpValue;
+	} while (helpValue < -99 || helpValue > 99);
+	tmp->value = helpValue;
+	
 	if (head == NULL){
 		tmp->next = NULL;
 		tmp->previous = NULL;
@@ -118,15 +104,17 @@ void List::addElementToTheBeginning(){
 
 void List::addElementToTheEnd(){
 	myList *tmp = new myList;	//create temporary pointer
-	//cout << "podaj wartosc: ";
-	//cin >> tmp->value;
-	tmp->value = (rand() % 199) + (-99);
+	int helpValue;
+
+	do{
+		cout << "podaj wartosc: ";
+		cin >> helpValue;
+	} while (helpValue < -99 || helpValue > 99);
+	tmp->value = helpValue;
 
 	if (head == NULL){
 		tmp->next = NULL;
 		tmp->previous = NULL;
-		//head = tmp;
-		// last = head;
 		last = tmp;
 		head = last;
 	}
@@ -158,14 +146,15 @@ void List::showInverseContent(){
 	}
 }
 
-
-
 void List::addElementSomewhere(){
 	myList *tmp = new myList;	//create temporary pointer
 	myList *tmp2 = new myList;
-	//cout << "podaj wartosc: ";
-	int helpValue = (rand() % 199) + (-99);
-	//cin >> helpValue;
+	int helpValue;
+
+	do{
+		cout << "podaj wartosc: ";
+		cin >> helpValue;
+	} while (helpValue < -99 || helpValue > 99);
 	tmp->value = helpValue;
 	
 
@@ -180,15 +169,14 @@ void List::addElementSomewhere(){
 	}
 	else {
 		
-		int place = (rand() % ElementsCounter) + 1;
-		//do{
-		//	cout << "W ktore miejsce dodac element: ";
-		//	cin >> place;
-		//} while (place < 1 || place > ElementsCounter + 1);
+		int place;
+		do{
+			cout << "W ktore miejsce dodac element: ";
+			cin >> place;
+		} while (place < 1 || place > ElementsCounter + 1);
 
 
 		if (place == 1){
-	
 			tmp->next = head;
 			tmp->previous = NULL;
 			head->previous = tmp;
@@ -242,11 +230,11 @@ void List::removeFirstElement(){ //just set pointer of neighbouring elements pro
 void List::removeSomeElement(){
 	myList *tmp = new myList;
 	myList *tmp2 = new myList;
-	int which = (rand() % ElementsCounter) + 1;
-	/*do{
+	int which;
+	do{
 		cout << "Ktory element usunac: ";
 		cin >> which;
-	} while (which < 0 || which > ElementsCounter);*/
+	} while (which < 0 || which > ElementsCounter);
 	tmp = head;
 	for (int i = 0; i < which-1; i++){	//set it in the correct position
 		tmp = tmp->next;
@@ -273,7 +261,7 @@ void List::findElement(){
 	do{
 		cout << "Ktory element chcesz wyswietlic: ";
 		cin >> which;
-	} while (which < 0 || which > ElementsCounter);
+	} while (which < 1 || which > ElementsCounter);
 
 	for (int i = 0; i < which-1; i++){
 		tmp = tmp->next;
@@ -283,24 +271,38 @@ void List::findElement(){
 
 void List::findElementValue(){
 	myList *tmp = head;
-	//cout << "Podaj wartosc jaka chcesz znalezc: ";
-	int toFind = (rand() % 199) + (-99);
-	//cin >> toFind;
+	cout << "Podaj wartosc jaka chcesz znalezc: ";
+	int toFind;
+	cin >> toFind;
 	bool isFound = false;
 
-	for (int i = 0; i < ElementsCounter; i++){
+	for (int i = 1; i < ElementsCounter+1; i++){
 		if (tmp->value == toFind){
-			//cout << "[" << i << "] " << tmp->value << endl;
+			cout << "[" << i << "] " << tmp->value << endl;
 			isFound = true;
 		}
 		tmp = tmp->next;
 	}
 
-	//if (isFound == false)
-		//cout << "Nie ma takiego elementu";
+	if (isFound == false)
+		cout << "Nie ma takiego elementu" << endl;
 }
-
 
 int List::getElementsCounter(){
 	return ElementsCounter;
+}
+
+List::~List()
+{
+	myList *tmp = head;
+	myList *tmp2 = head;
+
+	for (int i = 0; i <ElementsCounter; i++){
+		tmp->previous = NULL;
+		tmp = tmp->next;
+		tmp2->next = NULL;
+		tmp2->value = NULL;
+		tmp2 = tmp;
+	}
+	ElementsCounter = 0;
 }
