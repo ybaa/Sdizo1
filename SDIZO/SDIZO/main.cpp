@@ -78,7 +78,9 @@ int main()
 						table.findElement();
 						break;
 				case 9:
+						cout << endl;
 						table.showContent();
+						cout << endl;
 						break;
 				case 10:
 						break;
@@ -137,11 +139,14 @@ int main()
 						list.findElementValue();
 						break;
 				case 9:
+						cout << endl;
 						list.showContent();
+						cout << endl;
 						break;
 				case 10:
 						cout << endl;
 						list.showInverseContent();
+						cout << endl;
 						break;
 				case 11:
 						break;
